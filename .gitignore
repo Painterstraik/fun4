@@ -2,3 +2,5 @@ node_modules/
 .next/
 dist/
 out/
+lib/db/dev.db
+.DS_Store
