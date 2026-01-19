@@ -41,7 +41,7 @@ export function KpiCards({
       <Card>
         <CardContent className="p-4">
           <p className="text-xs uppercase text-slate-500">Laufzeit</p>
-          <p className="text-xl font-semibold text-slate-900">{durationYears} Jahre</p>
+          <p className="text-xl font-semibold text-slate-900">{durationYears % 1 === 0 ? durationYears : durationYears.toFixed(1)} Jahre</p>
         </CardContent>
       </Card>
     </div>

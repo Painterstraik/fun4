@@ -3,15 +3,16 @@ import { z } from "zod";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/auth";
 import { prisma } from "@/lib/db/client";
-import { parseScenarioDefaults } from "@/lib/db/serialize";
+
 import { simulateInvestment } from "@/lib/simulation/simulate";
 
 const schema = z.object({
   productSlug: z.string(),
-  monthlyContribution: z.number().min(0),
-  durationYears: z.number().min(1).max(60),
-  feesPa: z.number().min(0).max(0.2),
-  scenario: z.enum(["conservative", "base", "optimistic"])
+  startDate: z.string(),
+  startAge: z.number().min(0).max(100),
+  investDurationYears: z.number().min(1).max(60),
+  interestRate: z.number().min(0).max(0.2),
+  contribution: z.number().min(0)
 });
 
 export async function POST(request: Request) {
@@ -28,15 +29,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
 
-  const scenarioDefaults = parseScenarioDefaults(product.scenarioDefaults);
-
-  const returnsPa = scenarioDefaults[data.scenario];
-  const months = data.durationYears * 12;
   const result = simulateInvestment({
-    monthlyContribution: data.monthlyContribution,
-    months,
-    returnsPa,
-    feesPa: data.feesPa
+    startDate: data.startDate,
+    startAge: data.startAge,
+    investDurationYears: data.investDurationYears,
+    interestRate: data.interestRate,
+    contribution: data.contribution
   });
 
   const user = await prisma.user.findUnique({ where: { email: session.user.email } });
@@ -45,10 +43,11 @@ export async function POST(request: Request) {
     data: {
       productId: product.id,
       userId: user?.id,
-      monthlyContribution: data.monthlyContribution,
-      durationYears: data.durationYears,
-      feesPa: data.feesPa,
-      returnsPa,
+      startDate: new Date(data.startDate),
+      startAge: data.startAge,
+      investDurationYears: data.investDurationYears,
+      interestRate: data.interestRate,
+      contribution: data.contribution,
       result: JSON.stringify(result)
     }
   });

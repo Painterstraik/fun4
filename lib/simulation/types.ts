@@ -1,8 +1,9 @@
 export type SimulationInput = {
-  monthlyContribution: number;
-  months: number;
-  returnsPa: number;
-  feesPa: number;
+  startDate: string;
+  startAge: number;
+  investDurationYears: number;
+  interestRate: number;
+  contribution: number;
 };
 
 export type SimulationPoint = {
@@ -17,5 +18,13 @@ export type SimulationResult = {
     finalValue: number;
     totalInvested: number;
     profit: number;
+  };
+  meta: {
+    investMonths: number;
+    totalMonths: number;
+    investEndDate: string;
+    endDate: string;
+    startDate: string;
+    startAge: number;
   };
 };

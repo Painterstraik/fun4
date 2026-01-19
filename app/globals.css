@@ -8,8 +8,8 @@
 
 body {
   @apply bg-slate-50 text-slate-900;
-  background-image: radial-gradient(circle at top, rgba(59, 123, 255, 0.15), transparent 55%),
-    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  background-image: radial-gradient(circle at top, rgba(244, 63, 94, 0.18), transparent 55%),
+    linear-gradient(180deg, #fff5f6 0%, #ffeef0 100%);
   font-family: "Avenir Next", "Avenir", "Gill Sans", "Trebuchet MS", sans-serif;
   min-height: 100vh;
 }

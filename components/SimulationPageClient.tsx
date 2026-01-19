@@ -13,7 +13,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 export function SimulationPageClient({ product }: { product: Product }) {
   const [result, setResult] = useState<SimulationResult | null>(null);
   const [simulationId, setSimulationId] = useState<string | null>(null);
-  const [durationYears, setDurationYears] = useState<number>(product.defaultDurationYears);
 
   return (
     <div className="space-y-6">
@@ -24,10 +23,9 @@ export function SimulationPageClient({ product }: { product: Product }) {
 
       <SimulationForm
         product={product}
-        onResult={(payload, id, duration) => {
+        onResult={(payload, id) => {
           setResult(payload as SimulationResult);
           setSimulationId(id);
-          setDurationYears(duration);
         }}
       />
 
@@ -42,9 +40,9 @@ export function SimulationPageClient({ product }: { product: Product }) {
             <DialogTitle>Simulation Annahmen</DialogTitle>
           </DialogHeader>
           <div className="space-y-2 text-sm text-slate-600">
-            <p>Monatliche Sparrate wird zu Monatsbeginn investiert.</p>
-            <p>Rendite basiert auf dem gewaehlten Szenario p.a.</p>
-            <p>Gebuehren werden monatlich anteilig abgezogen.</p>
+            <p>Einzahlungen erfolgen monatlich bis zum Investitionsende.</p>
+            <p>Ab dem Investitionsende wachsen nur noch Zinsen.</p>
+            <p>Zinssatz wird monatlich anteilig angewendet.</p>
           </div>
         </DialogContent>
       </Dialog>
@@ -55,9 +53,9 @@ export function SimulationPageClient({ product }: { product: Product }) {
             finalValue={result.kpis.finalValue}
             totalInvested={result.kpis.totalInvested}
             profit={result.kpis.profit}
-            durationYears={durationYears}
+            durationYears={Math.round((result.meta.totalMonths / 12) * 10) / 10}
           />
-          <ResultChart data={result.series} />
+          <ResultChart data={result.series} startDate={result.meta.startDate} startAge={result.meta.startAge} />
           {simulationId && (
             <Button asChild variant="outline">
               <Link href={`/api/simulations/${simulationId}`}>Permalink oeffnen</Link>

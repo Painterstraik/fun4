@@ -4,6 +4,7 @@ import { CsvPriceProvider } from "@/lib/providers/CsvPriceProvider";
 import { StaticHoldingsProvider } from "@/lib/providers/StaticHoldingsProvider";
 import { PriceChartSection } from "@/components/PriceChartSection";
 import { HoldingsTable } from "@/components/HoldingsTable";
+import { HoldingsPieChart } from "@/components/HoldingsPieChart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +17,13 @@ const typeLabel: Record<string, string> = {
   fund_bond: "Rentenfonds",
   fund_equity: "Aktienfonds",
   index: "Index"
+};
+
+const formatDate = (value?: string) => {
+  if (!value) return "-";
+  const [year, month, day] = value.split("-");
+  if (!year || !month || !day) return value;
+  return `${day}.${month}.${year.slice(2)}`;
 };
 
 export default async function ProductDetailPage({
@@ -72,7 +80,7 @@ export default async function ProductDetailPage({
         <Card>
           <CardContent className="p-4">
             <p className="text-xs uppercase text-slate-500">Datenstand</p>
-            <p className="text-lg font-semibold">{last?.date ?? "-"}</p>
+            <p className="text-lg font-semibold">{formatDate(last?.date)}</p>
           </CardContent>
         </Card>
       </div>
@@ -81,8 +89,13 @@ export default async function ProductDetailPage({
         <CardHeader>
           <CardTitle>Top Holdings</CardTitle>
         </CardHeader>
-        <CardContent>
-          <HoldingsTable holdings={holdings} />
+        <CardContent className="flex flex-col items-center gap-6">
+          <div className="w-full max-w-2xl">
+            <HoldingsPieChart holdings={holdings} />
+          </div>
+          <div className="w-full">
+            <HoldingsTable holdings={holdings} />
+          </div>
         </CardContent>
       </Card>
 

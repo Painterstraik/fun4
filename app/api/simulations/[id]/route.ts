@@ -16,11 +16,12 @@ export async function GET(_: Request, { params }: { params: { id: string } }) {
     id: simulation.id,
     product: simulation.product,
     input: {
-      monthlyContribution: simulation.monthlyContribution,
-      durationYears: simulation.durationYears,
-      feesPa: simulation.feesPa,
-      returnsPa: simulation.returnsPa
+      startDate: simulation.startDate,
+      startAge: simulation.startAge,
+      investDurationYears: simulation.investDurationYears,
+      interestRate: simulation.interestRate,
+      contribution: simulation.contribution
     },
-    result: parseJson(simulation.result, { series: [], kpis: { finalValue: 0, totalInvested: 0, profit: 0 } })
+    result: parseJson(simulation.result, { series: [], kpis: { finalValue: 0, totalInvested: 0, profit: 0 }, meta: { investMonths: 0, totalMonths: 0, investEndDate: "" } })
   });
 }

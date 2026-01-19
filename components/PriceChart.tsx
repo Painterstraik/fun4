@@ -30,7 +30,7 @@ export function PriceChart({ data }: { data: PricePoint[] }) {
           <Line
             type="monotone"
             dataKey="close"
-            stroke="#3b7bff"
+            stroke="#f43f5e"
             strokeWidth={2}
             dot={false}
           />

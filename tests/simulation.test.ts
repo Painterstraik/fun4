@@ -1,16 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { simulateInvestment } from "../lib/simulation/simulate";
 
-const closeTo = (value: number, expected: number, tolerance = 0.01) =>
-  Math.abs(value - expected) < tolerance;
-
 describe("simulateInvestment", () => {
-  it("returns zeros when monthly contribution is 0", () => {
+  it("returns zeros when contribution is 0", () => {
     const result = simulateInvestment({
-      monthlyContribution: 0,
-      months: 12,
-      returnsPa: 0.05,
-      feesPa: 0.01
+      startDate: "2026-01-01",
+      startAge: 30,
+      investDurationYears: 10,
+      interestRate: 0.05,
+      contribution: 0
     });
 
     expect(result.kpis.finalValue).toBe(0);
@@ -18,30 +16,29 @@ describe("simulateInvestment", () => {
     expect(result.kpis.profit).toBe(0);
   });
 
-  it("portfolio is below invested when return is 0 and fees positive", () => {
+  it("stops contributions after invest end", () => {
     const result = simulateInvestment({
-      monthlyContribution: 100,
-      months: 12,
-      returnsPa: 0,
-      feesPa: 0.02
+      startDate: "2026-01-01",
+      startAge: 55,
+      investDurationYears: 10,
+      interestRate: 0.04,
+      contribution: 100
     });
 
-    expect(result.kpis.totalInvested).toBe(1200);
-    expect(result.kpis.finalValue).toBeLessThan(result.kpis.totalInvested);
+    const investedAtEnd = result.series[result.meta.investMonths - 1].investedTotal;
+    const investedAfter = result.series[result.meta.investMonths + 5].investedTotal;
+    expect(investedAtEnd).toBe(investedAfter);
   });
 
-  it("matches deterministic calculation for small months", () => {
+  it("caps invest duration by age 60", () => {
     const result = simulateInvestment({
-      monthlyContribution: 200,
-      months: 12,
-      returnsPa: 0.06,
-      feesPa: 0.01
+      startDate: "2026-01-01",
+      startAge: 58,
+      investDurationYears: 10,
+      interestRate: 0.04,
+      contribution: 100
     });
 
-    const expectedTotalInvested = 2400;
-    expect(result.kpis.totalInvested).toBe(expectedTotalInvested);
-
-    const expectedFinal = 2463.81;
-    expect(closeTo(result.kpis.finalValue, expectedFinal, 1)).toBe(true);
+    expect(result.meta.investMonths).toBe(24);
   });
 });
