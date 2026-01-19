@@ -1,0 +1,17 @@
+{
+  "slug": "munichre_trend",
+  "type": "multi_asset_markets",
+  "asOfDate": "2024-12-31",
+  "items": [
+    { "name": "S&P 500 Futures", "weightPct": 18.2, "meta": { "assetClass": "Equity Index", "symbol": "ES" } },
+    { "name": "Euro Stoxx 50 Futures", "weightPct": 12.4, "meta": { "assetClass": "Equity Index", "symbol": "FESX" } },
+    { "name": "US 10Y Treasury", "weightPct": 10.1, "meta": { "assetClass": "Bond", "symbol": "TY" } },
+    { "name": "German Bund 10Y", "weightPct": 9.5, "meta": { "assetClass": "Bond", "symbol": "FGBL" } },
+    { "name": "Gold Spot", "weightPct": 8.8, "meta": { "assetClass": "Commodity", "symbol": "XAU" } },
+    { "name": "Brent Crude", "weightPct": 7.2, "meta": { "assetClass": "Commodity", "symbol": "BRT" } },
+    { "name": "USD/EUR", "weightPct": 6.7, "meta": { "assetClass": "Fx", "symbol": "EURUSD" } },
+    { "name": "JPY/EUR", "weightPct": 5.9, "meta": { "assetClass": "Fx", "symbol": "EURJPY" } },
+    { "name": "MSCI EM Futures", "weightPct": 5.6, "meta": { "assetClass": "Equity Index", "symbol": "MXEF" } },
+    { "name": "US IG Credit", "weightPct": 5.6, "meta": { "assetClass": "Bond", "symbol": "LQD" } }
+  ]
+}

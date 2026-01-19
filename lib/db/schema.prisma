@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  role         String
+  createdAt    DateTime @default(now())
+  simulations  Simulation[]
+}
+
+model Product {
+  id                   String   @id @default(uuid())
+  slug                 String   @unique
+  name                 String
+  type                 String
+  currency             String
+  defaultFeesPa        Float
+  defaultDurationYears Int
+  description          String
+  riskHint             String
+  holdingsType         String
+  scenarioDefaults     String
+  simulations          Simulation[]
+}
+
+model Simulation {
+  id                 String   @id @default(uuid())
+  productId          String
+  userId             String?
+  monthlyContribution Float
+  durationYears      Int
+  feesPa             Float
+  returnsPa          Float
+  createdAt          DateTime @default(now())
+  result             String
+
+  product Product @relation(fields: [productId], references: [id])
+  user    User?   @relation(fields: [userId], references: [id])
+}

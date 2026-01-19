@@ -1,0 +1,17 @@
+{
+  "slug": "meag_globalaktien",
+  "type": "equity_companies",
+  "asOfDate": "2024-12-31",
+  "items": [
+    { "name": "Apple Inc.", "weightPct": 7.4, "meta": { "ticker": "AAPL", "sector": "Technology" } },
+    { "name": "Microsoft Corp.", "weightPct": 6.9, "meta": { "ticker": "MSFT", "sector": "Technology" } },
+    { "name": "NVIDIA Corp.", "weightPct": 5.5, "meta": { "ticker": "NVDA", "sector": "Technology" } },
+    { "name": "Alphabet Inc.", "weightPct": 4.6, "meta": { "ticker": "GOOGL", "sector": "Communication" } },
+    { "name": "Amazon.com Inc.", "weightPct": 4.2, "meta": { "ticker": "AMZN", "sector": "Consumer" } },
+    { "name": "Novo Nordisk", "weightPct": 3.8, "meta": { "ticker": "NOVO-B", "sector": "Healthcare" } },
+    { "name": "ASML Holding", "weightPct": 3.5, "meta": { "ticker": "ASML", "sector": "Technology" } },
+    { "name": "Nestle", "weightPct": 3.2, "meta": { "ticker": "NESN", "sector": "Consumer" } },
+    { "name": "LVMH", "weightPct": 3.1, "meta": { "ticker": "MC", "sector": "Consumer" } },
+    { "name": "SAP", "weightPct": 2.8, "meta": { "ticker": "SAP", "sector": "Technology" } }
+  ]
+}

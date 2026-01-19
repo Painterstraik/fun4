@@ -1,0 +1,17 @@
+{
+  "slug": "meag_eurorent",
+  "type": "bonds",
+  "asOfDate": "2024-12-31",
+  "items": [
+    { "name": "Bundesanleihe 2034", "weightPct": 14.1, "meta": { "isin": "DE0001102622", "issuer": "Germany", "coupon": "2.30%", "maturity": "2034-04-15" } },
+    { "name": "France OAT 2033", "weightPct": 12.7, "meta": { "isin": "FR001400N2J8", "issuer": "France", "coupon": "2.75%", "maturity": "2033-05-25" } },
+    { "name": "Netherlands 2032", "weightPct": 10.5, "meta": { "isin": "NL0015000RP1", "issuer": "Netherlands", "coupon": "2.50%", "maturity": "2032-01-15" } },
+    { "name": "Italy BTP 2035", "weightPct": 9.8, "meta": { "isin": "IT0005496773", "issuer": "Italy", "coupon": "3.60%", "maturity": "2035-03-01" } },
+    { "name": "Spain 2033", "weightPct": 8.2, "meta": { "isin": "ES0000012K61", "issuer": "Spain", "coupon": "3.15%", "maturity": "2033-04-30" } },
+    { "name": "EIB 2030", "weightPct": 7.5, "meta": { "isin": "XS1234567890", "issuer": "EIB", "coupon": "2.20%", "maturity": "2030-09-20" } },
+    { "name": "KfW 2031", "weightPct": 7.1, "meta": { "isin": "DE000A3H2QY9", "issuer": "KfW", "coupon": "2.10%", "maturity": "2031-06-15" } },
+    { "name": "BMW Finance 2029", "weightPct": 6.6, "meta": { "isin": "XS0987654321", "issuer": "BMW", "coupon": "2.85%", "maturity": "2029-11-12" } },
+    { "name": "Siemens 2030", "weightPct": 6.1, "meta": { "isin": "XS1111111111", "issuer": "Siemens", "coupon": "2.40%", "maturity": "2030-08-10" } },
+    { "name": "Allianz 2032", "weightPct": 7.4, "meta": { "isin": "XS2222222222", "issuer": "Allianz", "coupon": "2.95%", "maturity": "2032-02-28" } }
+  ]
+}

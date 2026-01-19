@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "munichre_trend",
+    "name": "Munich Re World Wide Trend Index",
+    "type": "trend",
+    "currency": "EUR",
+    "defaultFeesPa": 0.008,
+    "defaultDurationYears": 30,
+    "description": "Multi-Asset Trendstrategie mit globaler Streuung.",
+    "riskHint": "Hoeheres Risiko durch Trendfolge in mehreren Assetklassen.",
+    "holdingsType": "multi_asset_markets"
+  },
+  {
+    "slug": "meag_eurorent",
+    "name": "MEAG EuroRent A Fonds",
+    "type": "fund_bond",
+    "currency": "EUR",
+    "defaultFeesPa": 0.006,
+    "defaultDurationYears": 25,
+    "description": "Rentenfonds mit Fokus auf Euro-Staats- und Unternehmensanleihen.",
+    "riskHint": "Moderates Risiko durch Zins- und Kreditrisiken.",
+    "holdingsType": "bonds"
+  },
+  {
+    "slug": "meag_globalaktien",
+    "name": "MEAG GlobalAktien Fonds",
+    "type": "fund_equity",
+    "currency": "EUR",
+    "defaultFeesPa": 0.009,
+    "defaultDurationYears": 35,
+    "description": "Globale Aktienstrategie mit Schwerpunkt auf Large Caps.",
+    "riskHint": "Hoeheres Risiko durch Aktienmarktschwankungen.",
+    "holdingsType": "equity_companies"
+  },
+  {
+    "slug": "msci_world",
+    "name": "MSCI World",
+    "type": "index",
+    "currency": "EUR",
+    "defaultFeesPa": 0.002,
+    "defaultDurationYears": 35,
+    "description": "Breiter Weltaktienindex mit Industrielaendern.",
+    "riskHint": "Aktienrisiko ueber globale Maerkte.",
+    "holdingsType": "equity_companies"
+  }
+]

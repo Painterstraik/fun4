@@ -1,0 +1,17 @@
+{
+  "slug": "msci_world",
+  "type": "equity_companies",
+  "asOfDate": "2024-12-31",
+  "items": [
+    { "name": "Microsoft Corp.", "weightPct": 6.1, "meta": { "ticker": "MSFT", "sector": "Technology" } },
+    { "name": "Apple Inc.", "weightPct": 5.8, "meta": { "ticker": "AAPL", "sector": "Technology" } },
+    { "name": "NVIDIA Corp.", "weightPct": 4.2, "meta": { "ticker": "NVDA", "sector": "Technology" } },
+    { "name": "Amazon.com Inc.", "weightPct": 3.6, "meta": { "ticker": "AMZN", "sector": "Consumer" } },
+    { "name": "Alphabet Inc.", "weightPct": 3.4, "meta": { "ticker": "GOOGL", "sector": "Communication" } },
+    { "name": "Meta Platforms", "weightPct": 2.7, "meta": { "ticker": "META", "sector": "Communication" } },
+    { "name": "Berkshire Hathaway", "weightPct": 2.5, "meta": { "ticker": "BRK.B", "sector": "Financials" } },
+    { "name": "Tesla", "weightPct": 2.2, "meta": { "ticker": "TSLA", "sector": "Consumer" } },
+    { "name": "JPMorgan Chase", "weightPct": 1.9, "meta": { "ticker": "JPM", "sector": "Financials" } },
+    { "name": "Visa", "weightPct": 1.8, "meta": { "ticker": "V", "sector": "Financials" } }
+  ]
+}
