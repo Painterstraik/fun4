@@ -34,14 +34,16 @@ const addMonths = (value: string, months: number) => {
 export function ResultChart({
   data,
   startDate,
-  startAge
+  startAge,
+  scenario,
+  pensionLabel
 }: {
   data: SimulationPoint[];
   startDate: string;
   startAge: number;
+  scenario?: "accident" | "bu" | "death" | null;
+  pensionLabel?: string;
 }) {
-  const age67Months = Math.max(0, (67 - startAge) * 12);
-  const age67Date = addMonths(startDate, age67Months);
 
   return (
     <div className="h-80 w-full">
@@ -52,23 +54,37 @@ export function ResultChart({
           <YAxis tick={{ fontSize: 12 }} tickFormatter={(value) => formatCurrency(Number(value))} />
           <Tooltip formatter={(value) => formatCurrency(Number(value))} labelFormatter={formatYear} />
           <Legend />
-          <ReferenceLine x={age67Date} stroke="#7f1d1d" strokeDasharray="2 4" label={{ value: "67", position: "bottom", fill: "#7f1d1d" }} />
-          <Line
-            type="monotone"
-            dataKey="investedTotal"
-            name="Kumulierte Einzahlungen"
-            stroke="#0f172a"
-            strokeWidth={2}
-            dot={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="portfolioValue"
-            name="Kapital"
-            stroke="#f43f5e"
-            strokeWidth={2}
-            dot={false}
-          />
+          {pensionLabel && data.length > 0 && (
+            <ReferenceLine
+              x={data[data.length - 1].date}
+              stroke="transparent"
+              label={{
+                value: pensionLabel,
+                position: "bottom",
+                fill: "#7f1d1d"
+              }}
+            />
+          )}
+          {scenario !== "accident" && (
+            <>
+              <Line
+                type="monotone"
+                dataKey="investedTotal"
+                name="Kumulierte Einzahlungen"
+                stroke="#0f172a"
+                strokeWidth={2}
+                dot={false}
+              />
+              <Line
+                type="monotone"
+                dataKey="portfolioValue"
+                name="Kapital"
+                stroke="#f43f5e"
+                strokeWidth={2}
+                dot={false}
+              />
+            </>
+          )}
         </LineChart>
       </ResponsiveContainer>
     </div>

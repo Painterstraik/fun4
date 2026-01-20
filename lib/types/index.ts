@@ -44,6 +44,8 @@ export type SimulationInput = {
   investDurationYears: number;
   interestRate: number;
   contribution: number;
+  scenario?: "accident" | "bu" | "death";
+  eventDate?: string;
 };
 
 export type SimulationPoint = {

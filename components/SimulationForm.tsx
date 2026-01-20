@@ -20,7 +20,13 @@ type FormValues = z.infer<typeof schema>;
 
 type SimulationFormProps = {
   product: Product;
-  onResult: (result: unknown, id: string) => void;
+  onResult: (result: unknown, id: string, params: {
+    startDate: string;
+    startAge: number;
+    investDurationYears: number;
+    interestRate: number;
+    contribution: number;
+  }) => void;
 };
 
 export function SimulationForm({ product, onResult }: SimulationFormProps) {
@@ -61,7 +67,13 @@ export function SimulationForm({ product, onResult }: SimulationFormProps) {
       }
 
       const payload = await response.json();
-      onResult(payload.result, payload.id);
+      onResult(payload.result, payload.id, {
+        startDate: values.startDate,
+        startAge: values.startAge,
+        investDurationYears: values.investDurationYears,
+        interestRate: values.interestRate,
+        contribution: values.contribution
+      });
     } catch (error) {
       console.error(error);
     } finally {
